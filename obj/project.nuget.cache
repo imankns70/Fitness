@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B3DVWZ8Gatmvmep6XAdtEyoYG2cjxjOXkxqlwVf1PLpCOuz77+U3+63Ui9tefF8l9w4M0/nvpvOukakhCi4qNw==",
+  "dgSpecHash": "ktrYNOFl2zOWtwNKt6WPlf7l/J4+k+gXw8eY0q96zQOj55ihaqG0OPTEixvQ1DGG8+SaByitwhsgzMNGZl8Sgg==",
   "success": true,
-  "projectFilePath": "F:\\Fitness\\Fitness\\Fitness.csproj",
+  "projectFilePath": "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.0\\microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
     "C:\\Users\\iman\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.0\\microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
