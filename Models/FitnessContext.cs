@@ -16,5 +16,9 @@ namespace Fitness.Models
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Meal> Meals { get; set; }
+        public DbSet<Ingrediant> Ingrediants { get; set; }
+        public DbSet<MealIngrediant> MealIngrediants { get; set; }
+        public DbSet<UserMeal> UserMeals { get; set; }
     }
 }

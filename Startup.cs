@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Fitness.Models;
+using Fitness.Models.Business;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace Fitness
             services.AddControllers();
 
             services.AddScoped<FitnessContext>();
+            services.AddScoped<MealBusiness>();
             services.AddCors();
         }
 
