@@ -26,6 +26,7 @@ namespace Fitness.Controllers
         {
             if (id.HasValue)
             {
+                //return Ok(new List<MealViewModel>());
                 return Ok(_mealBusiness.GetMeals(id.Value));
             }
             return BadRequest("هیچ کاربری یافت نشد");
