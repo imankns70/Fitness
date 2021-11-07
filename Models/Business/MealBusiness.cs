@@ -23,9 +23,40 @@ namespace Fitness.Models.Business
                  {
                      Id = a.MealId,
                      Name = a.Meal.Name,
-                     Ingridiants = a.Meal.Ingrediants.Select(x => x.Ingrediant.Name).ToArray()
+                     Ingredients = a.Meal.Ingredients.Select(x => x.Ingredient.Name).ToArray()
                  }
                  ).ToList();
+        }
+
+        public void AddMeal(MealViewModel viewModel)
+        {
+
+            Meal meal = new Meal
+            {
+                Name = viewModel.Name,
+                Users = new List<UserMeal> {
+                     new UserMeal
+                     {
+                         UserId= viewModel.UserId
+                     }
+                }                
+            };
+
+            List<MealIngredient> mealIngredients = new List<MealIngredient>();
+
+            foreach (var item in viewModel.Ingredients)
+            {
+                MealIngredient mealIngredient = new MealIngredient
+                {
+                    Ingredient = new Ingredient { Name = item },
+                    Meal = meal
+                };
+                mealIngredients.Add(mealIngredient);
+            }
+            meal.Ingredients = mealIngredients;
+            this._fitnessContext.Meals.Add(meal);
+            _fitnessContext.SaveChanges();
+        
         }
 
     }

@@ -31,5 +31,17 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ کاربری یافت نشد");
         }
+        [HttpPost()]
+        public ApiResult<List<MealViewModel>> AddMeal(MealViewModel viewModel)
+        {
+            if (viewModel != null)
+            {
+                //return Ok(new List<MealViewModel>());
+                _mealBusiness.AddMeal(viewModel);
+                return Ok();
+            }
+            return BadRequest("هیچ داده ای ارسال نشد");
+        }
+
     }
 }

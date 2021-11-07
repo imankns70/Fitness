@@ -9,7 +9,7 @@ namespace Fitness.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<MealIngrediant> Ingrediants { get; set; }
+        public virtual ICollection<MealIngredient> Ingredients { get; set; }
         public virtual ICollection<UserMeal> Users { get; set; }
     }
 }

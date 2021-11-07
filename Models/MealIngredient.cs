@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Fitness.Models
 {
-    public class MealIngrediant
+    public class MealIngredient
     {
         [Key]
         public int Id { get; set; }
         public int MealId { get; set; }
-        public int IngrediantId { get; set; }
+        public int IngredientId { get; set; }
         public virtual Meal Meal { get; set; }
-        public virtual Ingrediant Ingrediant { get; set; }
+        public virtual Ingredient Ingredient { get; set; }
 
     }
 }

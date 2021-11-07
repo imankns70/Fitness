@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Fitness.Models
 {
-    public class Ingrediant
+    public class Ingredient
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<MealIngrediant> Meals { get; set; }
+        public virtual ICollection<MealIngredient> Meals { get; set; }
                 
     }
 }
