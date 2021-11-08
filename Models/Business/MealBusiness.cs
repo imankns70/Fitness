@@ -28,6 +28,20 @@ namespace Fitness.Models.Business
                  ).ToList();
         }
 
+        public void RemoveMeal(int mealId)
+        {
+            List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(a => a.MealId == mealId).ToList();
+            List<MealIngredient> mealIngredients = _fitnessContext.MealIngredients.Where(a => a.MealId == mealId).ToList();
+            List<Ingredient> ingredients = _fitnessContext.Ingredients.
+                Where(a => mealIngredients.Select(s=>s.IngredientId).Contains(a.Id)).ToList();
+            Meal meal = _fitnessContext.Meals.First(a => a.Id == mealId);
+            _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
+            _fitnessContext.UserMeals.RemoveRange(userMeals);
+            _fitnessContext.Ingredients.RemoveRange(ingredients);
+            _fitnessContext.Meals.Remove(meal);
+            _fitnessContext.SaveChanges();
+
+        }
         public void AddMeal(MealViewModel viewModel)
         {
 
@@ -39,7 +53,7 @@ namespace Fitness.Models.Business
                      {
                          UserId= viewModel.UserId
                      }
-                }                
+                }
             };
 
             List<MealIngredient> mealIngredients = new List<MealIngredient>();
@@ -56,7 +70,7 @@ namespace Fitness.Models.Business
             meal.Ingredients = mealIngredients;
             this._fitnessContext.Meals.Add(meal);
             _fitnessContext.SaveChanges();
-        
+
         }
 
     }

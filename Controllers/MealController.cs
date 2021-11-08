@@ -31,8 +31,8 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ کاربری یافت نشد");
         }
-        [HttpPost()]
-        public ApiResult<List<MealViewModel>> AddMeal(MealViewModel viewModel)
+        [HttpPost]
+        public ApiResult Add(MealViewModel viewModel)
         {
             if (viewModel != null)
             {
@@ -41,6 +41,17 @@ namespace Fitness.Controllers
                 return Ok();
             }
             return BadRequest("هیچ داده ای ارسال نشد");
+        }
+        [HttpDelete("{id}")]
+        public ApiResult Delete(int? id)
+        {
+            if (id != null)
+            {
+                //return Ok(new List<MealViewModel>());
+                _mealBusiness.RemoveMeal(id.Value);
+                return Ok();
+            }
+            return BadRequest("هیچ غذایی یافت نشد");
         }
 
     }

@@ -30,7 +30,6 @@ D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.xml
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.xml
-D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
