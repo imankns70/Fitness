@@ -28,7 +28,6 @@ D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.xml
 D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.xml
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
@@ -39,3 +38,4 @@ D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\F
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
 D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache

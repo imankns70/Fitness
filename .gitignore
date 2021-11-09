@@ -1,2 +1,3 @@
 
 bin/Debug/netcoreapp3.1/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+*.json
