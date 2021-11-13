@@ -43,7 +43,8 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ داده ای ارسال نشد");
         }
-       
+        public ApiResult
+
         [HttpDelete("{id}")]
         public ApiResult Delete(int? id)
         {
