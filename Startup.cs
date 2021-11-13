@@ -32,6 +32,7 @@ namespace Fitness
             options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             services.AddControllers();
 
+           
             services.AddScoped<FitnessContext>();
             services.AddScoped<MealBusiness>();
             services.AddCors();

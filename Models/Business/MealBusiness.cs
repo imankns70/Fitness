@@ -27,14 +27,14 @@ namespace Fitness.Models.Business
                  }
                  ).ToList();
         }
-     
+
 
         public void RemoveMeal(int mealId)
         {
             List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(a => a.MealId == mealId).ToList();
             List<MealIngredient> mealIngredients = _fitnessContext.MealIngredients.Where(a => a.MealId == mealId).ToList();
             List<Ingredient> ingredients = _fitnessContext.Ingredients.
-                Where(a => mealIngredients.Select(s=>s.IngredientId).Contains(a.Id)).ToList();
+                Where(a => mealIngredients.Select(s => s.IngredientId).Contains(a.Id)).ToList();
             Meal meal = _fitnessContext.Meals.First(a => a.Id == mealId);
             _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
             _fitnessContext.UserMeals.RemoveRange(userMeals);
@@ -43,36 +43,64 @@ namespace Fitness.Models.Business
             _fitnessContext.SaveChanges();
 
         }
+
         public void AddMeal(MealViewModel viewModel)
         {
-
-            Meal meal = new Meal
+            var name = _fitnessContext.Meals.SingleOrDefault(n => n.Name == viewModel.Name);
+            //var userId = _fitnessContext.UserMeals.SingleOrDefault(u => u.UserId == viewModel.UserId);
+            
+            if (name == null)
             {
-                Name = viewModel.Name,
-                Users = new List<UserMeal> {
-                     new UserMeal
-                     {
-                         UserId= viewModel.UserId
-                     }
-                }
-            };
-
-            List<MealIngredient> mealIngredients = new List<MealIngredient>();
-
-            foreach (var item in viewModel.Ingredients)
-            {
-                MealIngredient mealIngredient = new MealIngredient
+                Meal meal = new Meal
                 {
-                    Ingredient = new Ingredient { Name = item },
-                    Meal = meal
+                    Name = viewModel.Name,
+                    Users = new List<UserMeal>
+                    {
+                        new UserMeal
+                        {
+                            UserId= viewModel.UserId
+                        }
+                    }
                 };
-                mealIngredients.Add(mealIngredient);
+                List<Ingredient> existIngrediants = _fitnessContext.Ingredients.Where(a => viewModel.Ingredients.Contains(a.Name)).ToList();
+                foreach (var item in viewModel.Ingredients)
+                {
+                    var ingredient = existIngrediants.SingleOrDefault(i => i.Name == item);
+                    if (ingredient == null)
+                    {
+                        meal.Ingredients.Add(new MealIngredient
+
+                        {
+                            Ingredient = new Ingredient()
+                            {
+                                Name = item
+                            }
+
+                        });
+
+                    }
+                    else
+                    {
+                        meal.Ingredients.Add(new MealIngredient
+                        {
+                            Ingredient = ingredient
+
+                        });
+
+                    }
+
+
+                }
+
+
+                _fitnessContext.Meals.Add(meal);
+                _fitnessContext.SaveChanges();
             }
-            meal.Ingredients = mealIngredients;
-            this._fitnessContext.Meals.Add(meal);
-            _fitnessContext.SaveChanges();
-
+            else
+            {
+                throw new Exception("نام غذا تکراری می باشد");
+            }
         }
-
     }
 }
+

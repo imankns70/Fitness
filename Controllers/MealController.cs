@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fitness.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     [ApiResultFilter]
     public class MealController : ControllerBase
     {
@@ -31,7 +31,7 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ کاربری یافت نشد");
         }
-      
+
         [HttpPost]
         public ApiResult Add(MealViewModel viewModel)
         {

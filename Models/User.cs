@@ -8,6 +8,10 @@ namespace Fitness.Models
 {
     public class User
     {
+        public User()
+        {
+            Meals = new HashSet<UserMeal>();
+        }
         [Key]
         public int Id { get; set; }
         public string Email { get; set; }
