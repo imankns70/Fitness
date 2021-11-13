@@ -42,7 +42,6 @@ namespace Fitness.Controllers
                 return Ok(user);
             }
             return BadRequest("ایمیل تکراری میباشد");
-
         }
         [HttpPost("[action]")]
         public ApiResult<User> Login([FromBody] User user)
@@ -52,7 +51,6 @@ namespace Fitness.Controllers
             if (userModel != null)
                 return Ok(userModel);
             return BadRequest("هیچ کاربری پیدا نشد");
-
 
         }
     }

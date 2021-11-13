@@ -15,14 +15,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="newtonsoft.json" Version="9.0.1" />
+	   
     <!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />-->
     
-  </ItemGroup> 
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\P_Production\KSCMaintenance\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
   </ItemGroup>
  
 
