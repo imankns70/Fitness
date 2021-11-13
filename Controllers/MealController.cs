@@ -42,6 +42,7 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ داده ای ارسال نشد");
         }
+        // update the action
         [HttpPut]
         public ApiResult Edit(MealViewModel viewModel)
         {
