@@ -37,8 +37,17 @@ namespace Fitness.Controllers
         {
             if (viewModel != null)
             {
-                //return Ok(new List<MealViewModel>());
                 _mealBusiness.AddMeal(viewModel);
+                return Ok();
+            }
+            return BadRequest("هیچ داده ای ارسال نشد");
+        }
+        [HttpPut]
+        public ApiResult Edit(MealViewModel viewModel)
+        {
+            if (viewModel != null)
+            {
+               // _mealBusiness.EditMeal(viewModel);
                 return Ok();
             }
             return BadRequest("هیچ داده ای ارسال نشد");
