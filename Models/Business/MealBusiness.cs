@@ -53,7 +53,9 @@ namespace Fitness.Models.Business
                         };
                         _fitnessContext.MealIngredients.Remove(mealIngredient1);
                     }
+
                 }
+
                 List<int> usersId = _fitnessContext.UserMeals.Where(a => a.MealId == meal.Id).Select(a => a.UserId).ToList();
                 if (usersId.ToString() != null)
                 {
@@ -67,8 +69,13 @@ namespace Fitness.Models.Business
                         _fitnessContext.UserMeals.Remove(userMeal);
                     }
                 }
-       
+
                 _fitnessContext.Meals.Remove(meal);
+                if (!_fitnessContext.MealIngredients.Any(a => a.IngredientId == a.Ingredient.Id))
+                {
+
+                   
+                }
                 _fitnessContext.SaveChanges();
 
             }
