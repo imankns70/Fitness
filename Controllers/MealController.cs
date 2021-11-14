@@ -21,15 +21,14 @@ namespace Fitness.Controllers
         {
             _mealBusiness = mealBusiness;
         }
-        [HttpGet("{id}")]
+        [HttpGet]
+        //[HttpGet("{id}")]
         public ApiResult<List<MealViewModel>> Get(int? id)
         {
-            if (id.HasValue)
-            {
                 //return Ok(new List<MealViewModel>());
-                return Ok(_mealBusiness.GetMeals(id.Value));
-            }
-            return BadRequest("هیچ کاربری یافت نشد");
+                return Ok(_mealBusiness.GetMeals(id));
+            
+           
         }
 
         [HttpPost]
@@ -48,20 +47,23 @@ namespace Fitness.Controllers
         {
             if (viewModel != null)
             {
-               // _mealBusiness.EditMeal(viewModel);
+                _mealBusiness.EditMeal(viewModel);
                 return Ok();
             }
             return BadRequest("هیچ داده ای ارسال نشد");
         }
         [HttpDelete("{id}")]
-        public ApiResult Delete(int? id)
+        public ApiResult Delete(int id)
         {
-            if (id != null)
+            if (id.ToString() != null)
             {
                 //return Ok(new List<MealViewModel>());
-                _mealBusiness.RemoveMeal(id.Value);
+                _mealBusiness.DeleteMeal(id);
+                //_mealBusiness.RemoveMeal(id.Value);
                 return Ok();
             }
+                
+           
             return BadRequest("هیچ غذایی یافت نشد");
         }
 

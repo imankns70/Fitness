@@ -1,4 +1,5 @@
 ﻿using Fitness.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,20 +16,64 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<MealViewModel> GetMeals(int userId)
+        public List<MealViewModel> GetMeals(int? userId)
         {
+            var result = _fitnessContext.UserMeals.AsQueryable();
+            if (userId.HasValue)
+            {
+                result = result.Where(a => a.UserId == userId);
+            }
 
-            return _fitnessContext.UserMeals.Where(a => a.UserId == userId)
+            return result
                  .Select(a => new MealViewModel
                  {
                      Id = a.MealId,
                      Name = a.Meal.Name,
-                     Ingredients = a.Meal.Ingredients.Select(x => x.Ingredient.Name).ToArray()
+                     Ingredients = a.Meal.Ingredients.Select(x => x.Ingredient.Name).ToArray(),
+                     UserId = a.UserId
                  }
                  ).ToList();
         }
 
+        public void DeleteMeal(int mealId)
+        {
+            Meal meal = _fitnessContext.Meals.Include(a => a.Ingredients).Include(a => a.Users)
+                .SingleOrDefault(a => a.Id == mealId);
+            if (meal != null)
+            {
+                List<int> ingredientId = _fitnessContext.MealIngredients.Where(a => a.MealId == meal.Id).Select(a => a.IngredientId).ToList();
+                if (ingredientId.ToString() != null)
+                {
+                    foreach (var item in ingredientId)
+                    {
+                        MealIngredient mealIngredient1 = new MealIngredient()
+                        {
+                            MealId = meal.Id,
+                            IngredientId = item
+                        };
+                        _fitnessContext.MealIngredients.Remove(mealIngredient1);
+                    }
+                }
+                List<int> usersId = _fitnessContext.UserMeals.Where(a => a.MealId == meal.Id).Select(a => a.UserId).ToList();
+                if (usersId.ToString() != null)
+                {
+                    foreach (var userid in usersId)
+                    {
+                        UserMeal userMeal = new UserMeal()
+                        {
+                            MealId = meal.Id,
+                            UserId = userid
+                        };
+                        _fitnessContext.UserMeals.Remove(userMeal);
+                    }
+                }
+       
+                _fitnessContext.Meals.Remove(meal);
+                _fitnessContext.SaveChanges();
 
+            }
+
+        }
         public void RemoveMeal(int mealId)
         {
             List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(a => a.MealId == mealId).ToList();
@@ -40,15 +85,47 @@ namespace Fitness.Models.Business
             _fitnessContext.UserMeals.RemoveRange(userMeals);
             _fitnessContext.Ingredients.RemoveRange(ingredients);
             _fitnessContext.Meals.Remove(meal);
-            _fitnessContext.SaveChanges();
+
 
         }
 
+        public void EditMeal(MealViewModel viewModel)
+        {
+            var meal = _fitnessContext.Meals.SingleOrDefault(i => i.Id == viewModel.Id);
+            if (meal != null)
+            {
+                if (viewModel.Name != null)
+                {
+                    if (!_fitnessContext.Meals.Any(n => n.Name == viewModel.Name))
+                    {
+                        meal.Name = viewModel.Name;
+                    }
+
+                }
+                if (viewModel.Ingredients != null)
+                {
+                    foreach (var item in viewModel.Ingredients)
+                    {
+                        if (!_fitnessContext.Ingredients.Any(i => i.Name == item))
+                        {
+                            _fitnessContext.Ingredients.Add(new Ingredient()
+                            {
+                                Name = item
+                            });
+                        }
+
+                    }
+                }
+            }
+
+            _fitnessContext.Meals.Update(meal);
+            _fitnessContext.SaveChanges();
+        }
         public void AddMeal(MealViewModel viewModel)
         {
             var name = _fitnessContext.Meals.SingleOrDefault(n => n.Name == viewModel.Name);
             //var userId = _fitnessContext.UserMeals.SingleOrDefault(u => u.UserId == viewModel.UserId);
-            
+
             if (name == null)
             {
                 Meal meal = new Meal
@@ -77,7 +154,6 @@ namespace Fitness.Models.Business
                             }
 
                         });
-
                     }
                     else
                     {
@@ -86,10 +162,7 @@ namespace Fitness.Models.Business
                             Ingredient = ingredient
 
                         });
-
                     }
-
-
                 }
 
 
