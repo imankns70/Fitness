@@ -25,10 +25,10 @@ namespace Fitness.Controllers
         //[HttpGet("{id}")]
         public ApiResult<List<MealViewModel>> Get(int? id)
         {
-                //return Ok(new List<MealViewModel>());
-                return Ok(_mealBusiness.GetMeals(id));
-            
-           
+            //return Ok(new List<MealViewModel>());
+            return Ok(_mealBusiness.GetMeals(id));
+
+
         }
 
         [HttpPost]
@@ -52,18 +52,15 @@ namespace Fitness.Controllers
             }
             return BadRequest("هیچ داده ای ارسال نشد");
         }
-        [HttpDelete("{id}")]
-        public ApiResult Delete(int id)
+        [HttpDelete]
+        public ApiResult Delete(MealViewModel viewModel)
         {
-            if (id.ToString() != null)
+            if (viewModel != null)
             {
-                //return Ok(new List<MealViewModel>());
-                _mealBusiness.DeleteMeal(id);
-                //_mealBusiness.RemoveMeal(id.Value);
+                _mealBusiness.Remove(viewModel.Id, viewModel.UserId);            
                 return Ok();
             }
-                
-           
+
             return BadRequest("هیچ غذایی یافت نشد");
         }
 

@@ -35,6 +35,43 @@ namespace Fitness.Models.Business
                  ).ToList();
         }
 
+        public void Remove(int mealId, int userId)
+        {
+
+            //UserMeal userMeal = _fitnessContext.UserMeals.Where(a => a.MealId == mealId && a.UserId == userId).Single();
+            List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(c => c.MealId == mealId).ToList();
+            List<UserMeal> anotherUserMeals = userMeals.Where(a => a.UserId != userId).ToList();
+            List<MealIngredient> mealIngredients = _fitnessContext.MealIngredients.Where(c => c.MealId == mealId).ToList();
+            List<MealIngredient> anotheringridents = mealIngredients.Where(a => a.MealId != mealId).ToList();
+            if (!anotheringridents.Any() && !anotherUserMeals.Any())
+            {
+
+                Meal meal = _fitnessContext.Meals.Single(a=> a.Id==mealId);
+                _fitnessContext.Meals.Remove(meal);
+            }
+
+            else
+            {
+                if (anotheringridents.Any())
+                {
+                    _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
+                }
+
+                if (anotherUserMeals.Any())
+                {
+                    UserMeal userMeal = userMeals.Single(a => a.UserId == userId);
+                    _fitnessContext.UserMeals.Remove(userMeal);
+                }
+            }
+
+            _fitnessContext.SaveChanges();
+
+
+
+
+        }
+
+
         public void DeleteMeal(int mealId)
         {
             Meal meal = _fitnessContext.Meals.Include(a => a.Ingredients).Include(a => a.Users)
@@ -42,7 +79,7 @@ namespace Fitness.Models.Business
             if (meal != null)
             {
                 List<int> ingredientId = _fitnessContext.MealIngredients.Where(a => a.MealId == meal.Id).Select(a => a.IngredientId).ToList();
-                if (ingredientId.ToString() != null)
+                if (ingredientId.Any())
                 {
                     foreach (var item in ingredientId)
                     {
@@ -74,7 +111,7 @@ namespace Fitness.Models.Business
                 if (!_fitnessContext.MealIngredients.Any(a => a.IngredientId == a.Ingredient.Id))
                 {
 
-                   
+
                 }
                 _fitnessContext.SaveChanges();
 
