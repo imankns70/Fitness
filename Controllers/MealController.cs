@@ -21,8 +21,8 @@ namespace Fitness.Controllers
         {
             _mealBusiness = mealBusiness;
         }
-        [HttpGet]
-        //[HttpGet("{id}")]
+        //[HttpGet]
+        [HttpGet("{id}")]
         public ApiResult<List<MealViewModel>> Get(int? id)
         {
             //return Ok(new List<MealViewModel>());
