@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj": {}
+    "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj": {
+    "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj",
+        "projectUniqueName": "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj",
         "projectName": "Fitness",
-        "projectPath": "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj",
+        "projectPath": "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj",
         "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\obj\\",
+        "outputPath": "D:\\Projects\\Fitness\\Fitness\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",

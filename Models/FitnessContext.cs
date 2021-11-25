@@ -20,5 +20,7 @@ namespace Fitness.Models
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<MealIngredient> MealIngredients { get; set; }
         public DbSet<UserMeal> UserMeals { get; set; }
+        public DbSet<Workout> Workouts { get; set; }
+        public DbSet<UserWorkout> UserWorkouts { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VhQKmVfdUnXJojfE/myKnZetlU8Tq15TyPNqasZbjd54YrIRU0/NE4dJd0T7o+ibpr1e3VzOTzaC3Jm7jjTKPw==",
+  "dgSpecHash": "LJlK/5EZUPrYa6D8jr3jB+jz6k2O2C1UmMg7IlLo6U8lXpDWT+XgRThQSlIAbRFI+r2bKFMxcQFedznVUBUtWQ==",
   "success": true,
-  "projectFilePath": "D:\\Programming\\Projects\\AngularExamples\\Fitness\\back end\\Fitness\\Fitness.csproj",
+  "projectFilePath": "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iman\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\iman\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

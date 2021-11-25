@@ -11,11 +11,13 @@ namespace Fitness.Models
         public User()
         {
             Meals = new HashSet<UserMeal>();
+            Workouts = new HashSet<UserWorkout>();
         }
         [Key]
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public virtual ICollection<UserMeal> Meals { get; set; }
+        public virtual ICollection<UserWorkout> Workouts { get; set; }
     }
 }
