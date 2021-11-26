@@ -34,10 +34,41 @@ namespace Fitness.Models.Business
                  }
                  ).ToList();
         }
+        public void RemoveMe(int mealId, int userId)
+        {
+            Meal meal = _fitnessContext.Meals.Include(a => a.Users).Include(a => a.Ingredients).Where(a=>a.Id==mealId).Single();
+            UserMeal userMeals = meal.Users.SingleOrDefault(c => c.MealId == mealId && c.UserId == userId);
+            
+            List<MealIngredient> mealIngredients = meal.Ingredients.Where(c => c.MealId == mealId).ToList();
+            List<MealIngredient> anotheringridents = meal.Ingredients.Where(a => a.MealId != mealId).ToList();
+            if(anotheringridents.Any(a=>a.IngredientId==)
+            if (!anotheringridents.Any() && !anotherUserMeals.Any())
+            {
+
+                Meal meal = _fitnessContext.Meals.Single(a => a.Id == mealId);
+                _fitnessContext.Meals.Remove(meal);
+            }
+
+            else
+            {
+                if (anotheringridents.Any())
+                {
+                    _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
+                }
+
+                if (anotherUserMeals.Any())
+                {
+                    UserMeal userMeal = userMeals.Single(a => a.UserId == userId);
+                    _fitnessContext.UserMeals.Remove(userMeal);
+                }
+            }
+
+            _fitnessContext.SaveChanges();
+        }
 
         public void Remove(int mealId, int userId)
         {
-
+            
             //UserMeal userMeal = _fitnessContext.UserMeals.Where(a => a.MealId == mealId && a.UserId == userId).Single();
             List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(c => c.MealId == mealId).ToList();
             List<UserMeal> anotherUserMeals = userMeals.Where(a => a.UserId != userId).ToList();
@@ -72,66 +103,66 @@ namespace Fitness.Models.Business
         }
 
 
-        public void DeleteMeal(int mealId)
-        {
-            Meal meal = _fitnessContext.Meals.Include(a => a.Ingredients).Include(a => a.Users)
-                .SingleOrDefault(a => a.Id == mealId);
-            if (meal != null)
-            {
-                List<int> ingredientId = _fitnessContext.MealIngredients.Where(a => a.MealId == meal.Id).Select(a => a.IngredientId).ToList();
-                if (ingredientId.Any())
-                {
-                    foreach (var item in ingredientId)
-                    {
-                        MealIngredient mealIngredient1 = new MealIngredient()
-                        {
-                            MealId = meal.Id,
-                            IngredientId = item
-                        };
-                        _fitnessContext.MealIngredients.Remove(mealIngredient1);
-                    }
+        //public void DeleteMeal(int mealId)
+        //{
+        //    Meal meal = _fitnessContext.Meals.Include(a => a.Ingredients).Include(a => a.Users)
+        //        .SingleOrDefault(a => a.Id == mealId);
+        //    if (meal != null)
+        //    {
+        //        List<int> ingredientId = _fitnessContext.MealIngredients.Where(a => a.MealId == meal.Id).Select(a => a.IngredientId).ToList();
+        //        if (ingredientId.Any())
+        //        {
+        //            foreach (var item in ingredientId)
+        //            {
+        //                MealIngredient mealIngredient1 = new MealIngredient()
+        //                {
+        //                    MealId = meal.Id,
+        //                    IngredientId = item
+        //                };
+        //                _fitnessContext.MealIngredients.Remove(mealIngredient1);
+        //            }
 
-                }
+        //        }
 
-                List<int> usersId = _fitnessContext.UserMeals.Where(a => a.MealId == meal.Id).Select(a => a.UserId).ToList();
-                if (usersId.ToString() != null)
-                {
-                    foreach (var userid in usersId)
-                    {
-                        UserMeal userMeal = new UserMeal()
-                        {
-                            MealId = meal.Id,
-                            UserId = userid
-                        };
-                        _fitnessContext.UserMeals.Remove(userMeal);
-                    }
-                }
+        //        List<int> usersId = _fitnessContext.UserMeals.Where(a => a.MealId == meal.Id).Select(a => a.UserId).ToList();
+        //        if (usersId.ToString() != null)
+        //        {
+        //            foreach (var userid in usersId)
+        //            {
+        //                UserMeal userMeal = new UserMeal()
+        //                {
+        //                    MealId = meal.Id,
+        //                    UserId = userid
+        //                };
+        //                _fitnessContext.UserMeals.Remove(userMeal);
+        //            }
+        //        }
 
-                _fitnessContext.Meals.Remove(meal);
-                if (!_fitnessContext.MealIngredients.Any(a => a.IngredientId == a.Ingredient.Id))
-                {
-
-
-                }
-                _fitnessContext.SaveChanges();
-
-            }
-
-        }
-        public void RemoveMeal(int mealId)
-        {
-            List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(a => a.MealId == mealId).ToList();
-            List<MealIngredient> mealIngredients = _fitnessContext.MealIngredients.Where(a => a.MealId == mealId).ToList();
-            List<Ingredient> ingredients = _fitnessContext.Ingredients.
-                Where(a => mealIngredients.Select(s => s.IngredientId).Contains(a.Id)).ToList();
-            Meal meal = _fitnessContext.Meals.First(a => a.Id == mealId);
-            _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
-            _fitnessContext.UserMeals.RemoveRange(userMeals);
-            _fitnessContext.Ingredients.RemoveRange(ingredients);
-            _fitnessContext.Meals.Remove(meal);
+        //        _fitnessContext.Meals.Remove(meal);
+        //        if (!_fitnessContext.MealIngredients.Any(a => a.IngredientId == a.Ingredient.Id))
+        //        {
 
 
-        }
+        //        }
+        //        _fitnessContext.SaveChanges();
+
+        //    }
+
+        //}
+        //public void RemoveMeal(int mealId)
+        //{
+        //    List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(a => a.MealId == mealId).ToList();
+        //    List<MealIngredient> mealIngredients = _fitnessContext.MealIngredients.Where(a => a.MealId == mealId).ToList();
+        //    List<Ingredient> ingredients = _fitnessContext.Ingredients.
+        //        Where(a => mealIngredients.Select(s => s.IngredientId).Contains(a.Id)).ToList();
+        //    Meal meal = _fitnessContext.Meals.First(a => a.Id == mealId);
+        //    _fitnessContext.MealIngredients.RemoveRange(mealIngredients);
+        //    _fitnessContext.UserMeals.RemoveRange(userMeals);
+        //    _fitnessContext.Ingredients.RemoveRange(ingredients);
+        //    _fitnessContext.Meals.Remove(meal);
+
+
+        //}
 
         public void EditMeal(MealViewModel viewModel)
         {
