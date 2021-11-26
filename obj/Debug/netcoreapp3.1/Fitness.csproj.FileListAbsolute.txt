@@ -81,7 +81,6 @@ D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
-D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.AssemblyReference.cache
 D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
