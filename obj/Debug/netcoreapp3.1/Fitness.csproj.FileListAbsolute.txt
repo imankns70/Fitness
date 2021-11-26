@@ -47,7 +47,6 @@ D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
-D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
