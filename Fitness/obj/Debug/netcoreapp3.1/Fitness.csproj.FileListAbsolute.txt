@@ -1,0 +1,208 @@
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.exe
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.deps.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\toturials\Projects\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.xml
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.RazorTargetAssemblyInfo.cache
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.Manifest.cache
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\toturials\Projects\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.exe
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.deps.json
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\.netCore\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.GeneratedMSBuildEditorConfig.editorconfig
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CoreCompileInputs.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.Manifest.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\scopedcss\bundle\Fitness.styles.css
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.RazorTargetAssemblyInfo.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.exe
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.deps.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CoreCompileInputs.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.RazorTargetAssemblyInfo.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.Manifest.cache
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\Programming\Projects\AngularExamples\Fitness\back end\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.exe
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.deps.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CoreCompileInputs.cache
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.RazorTargetAssemblyInfo.cache
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.Manifest.cache
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.exe
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.deps.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.runtimeconfig.dev.json
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Fitness.pdb
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Projects1\Fitness\Fitness\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CoreCompileInputs.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfoInputs.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.AssemblyInfo.cs
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.RazorTargetAssemblyInfo.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.CopyComplete
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.Manifest.cache
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.StaticWebAssets.xml
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
+D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
