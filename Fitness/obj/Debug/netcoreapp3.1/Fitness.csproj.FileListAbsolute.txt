@@ -206,3 +206,4 @@ D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\staticwebassets\Fitness.Sta
 D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
 D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
 D:\Projects1\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
+D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.AssemblyReference.cache
