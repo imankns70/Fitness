@@ -15,13 +15,49 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<Workout> GetWorkout()
+        public List<WorkoutViewModel> GetWorkout()
         {
-            return _fitnessContext.Workouts.ToList();
+            return _fitnessContext.Workouts.Select(w=>new WorkoutViewModel() {
+            WorkoutId=w.Id,
+            Name=w.Name,
+            Type=w.Type,
+            UserId=w.UserId,
+            Endurance=new EnduranceViewModel()
+            {
+                Distance=w.Distance,
+                Duration=w.Duration
+            },
+            Strength=new StrengthViewModel()
+            {
+                Reps=w.Reps,
+                Sets=w.Sets,
+                Weight=w.Weight
+            }
+            
+            
+            }).ToList();
         }
-        public Workout GetWorkoutById(int workoutId)
+        public WorkoutViewModel GetWorkoutById(int workoutId)
         {
-            return _fitnessContext.Workouts.Find(workoutId);
+            Workout workout=_fitnessContext.Workouts.Find(workoutId);
+            return new WorkoutViewModel()
+            {
+                WorkoutId=workout.Id,
+                Name=workout.Name,
+                Type=workout.Type,
+                UserId=workout.UserId,
+                Endurance=new EnduranceViewModel()
+                {
+                    Distance=workout.Distance,
+                    Duration=workout.Duration
+                },
+                Strength=new StrengthViewModel()
+                {
+                    Reps=workout.Reps,
+                    Sets=workout.Sets,
+                    Weight=workout.Weight
+                }
+            };
         }
         public void AddWorkouts(WorkoutViewModel viewModel)
         {
@@ -46,7 +82,6 @@ namespace Fitness.Models.Business
             _fitnessContext.Workouts.Add(workout);
             _fitnessContext.SaveChanges();
         }
-
         public void EditWorkouts(WorkoutViewModel viewModel)
         {
             Workout workout = _fitnessContext.Workouts.SingleOrDefault(a => a.Id == viewModel.WorkoutId);
@@ -75,8 +110,6 @@ namespace Fitness.Models.Business
             {
                 throw new Exception("هیچ تمرینی برایشما یافت نشد");
             }
-
-
         }
         public void DeleteWorkouts(int WorkoutId)
         {
