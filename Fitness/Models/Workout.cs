@@ -22,6 +22,7 @@ namespace Fitness.Models
         public int? Weight { get; set; }
         public int? Distance { get; set; }
         public int? Duration { get; set; }
+        public int UserId { get; set; }
         public virtual ICollection<UserWorkout> Users { get; set; }
     }
 }

@@ -42,7 +42,7 @@ namespace Fitness.Controllers
         [HttpPost]
         public ApiResult AddWorkout(WorkoutViewModel workout)
         {
-            workoutBusines.AddWorkout(workout);
+            workoutBusines.AddWorkouts(workout);
             return Ok();
         }
 
@@ -51,17 +51,26 @@ namespace Fitness.Controllers
         [HttpPut]
         public ApiResult EditWorkout(WorkoutViewModel viewModel)
         {
+            try
+            {
+                workoutBusines.EditWorkouts(viewModel);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                
+            }
 
-            //workoutBusines.EditWorkout(id);
+         
             return Ok();
            
         }
 
         // DELETE api/<WorkOutController>/5
         [HttpDelete]
-        public void Delete(int workoutId)
+        public void DeleteWorkout(int id)
         {
-            //workoutBusines.DeleteWorkout(id);
+            workoutBusines.DeleteWorkouts(id);
         }
     }
 }

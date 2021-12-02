@@ -23,14 +23,16 @@ namespace Fitness.Models.Business
         {
             return _fitnessContext.Workouts.Find(workoutId);
         }
-        public void AddWorkout(WorkoutViewModel viewModel)
+        public void AddWorkouts(WorkoutViewModel viewModel)
         {
-            Workout workout = new Workout {
+            Workout workout = new Workout
+            {
                 Name = viewModel.Name,
-                Type=viewModel.Type
+                Type = viewModel.Type,
+                UserId = viewModel.UserId
 
             };
-            if (viewModel.Type== "Strength")
+            if (viewModel.Type == "Strength")
             {
                 workout.Reps = viewModel.Strength.Reps;
                 workout.Sets = viewModel.Strength.Sets;
@@ -44,60 +46,41 @@ namespace Fitness.Models.Business
             _fitnessContext.Workouts.Add(workout);
             _fitnessContext.SaveChanges();
         }
-        //public void AddWorkout(Workout workout)
-        //{
-        //    _fitnessContext.Workouts.Add(workout);
-        //    _fitnessContext.SaveChanges();
 
-        //    if (workout.TypeId == "1")
-        //    {
-        //        var endurance = _fitnessContext.WorkoutEndurances.FirstOrDefault(w => w.Workout_Id == workout.Id);
-
-        //        EnduranceworkoutViewModel enduranceworkout = new EnduranceworkoutViewModel()
-        //        {
-        //            WorkoutId = workout.Id,
-        //            Name = workout.Name,
-        //            Distance =endurance.Distance,
-        //            Duration=endurance.Duration,
-        //            TypeId=workout.TypeId
-
-        //        };
-
-        //    }
-        //    if (workout.TypeId == "2")
-        //    {
-        //        var strength = _fitnessContext.WorkoutStrengths.FirstOrDefault(w => w.Workout_Id == workout.Id);
-        //        StrengthWorkoutViewModel strengthWorkout = new StrengthWorkoutViewModel()
-        //        {
-        //            WorkoutId=workout.Id,
-        //            Name=workout.Name,
-        //            TypeId=workout.TypeId,
-        //            Sets= strength.Sets,
-        //            Reps= strength.Reps,
-        //            Weight=strength.Weight
-
-        //        };
-        //    }
-        //}
-
-        public void EditWorkout(int workoutId)
+        public void EditWorkouts(WorkoutViewModel viewModel)
         {
-            Workout workout = _fitnessContext.Workouts.Find(workoutId);
+            Workout workout = _fitnessContext.Workouts.SingleOrDefault(a => a.Id == viewModel.WorkoutId);
             if (workout != null)
-            {             
-                _fitnessContext.Workouts.Update(workout);
+            {
+                workout.Id = viewModel.WorkoutId.Value;
+                workout.Name = viewModel.Name;
+                workout.Type = viewModel.Type;
+                
+                if (viewModel.Type == "Strength")
+                {
+                    workout.Sets = viewModel.Strength.Sets;
+                    workout.Reps = viewModel.Strength.Reps;
+                    workout.Weight = viewModel.Strength.Weight;
+                }
+                else
+                {
+                    workout.Duration = viewModel.Endurance.Duration;
+                    workout.Distance = viewModel.Endurance.Distance;
+                }
 
+                _fitnessContext.Workouts.Update(workout);
                 _fitnessContext.SaveChanges();
             }
+            else
+            {
+                throw new Exception("هیچ تمرینی برایشما یافت نشد");
+            }
+
+
         }
-        public void DeleteWorkout(int WorkoutId)
-        {       
+        public void DeleteWorkouts(int WorkoutId)
+        {
             Workout workout = _fitnessContext.Workouts.Find(WorkoutId);
-            //var UserWorkout = _fitnessContext.UserWorkouts.Where(w => w.WorkoutId == WorkoutId).ToList();
-            //if (UserWorkout != null)
-            //{
-            //    _fitnessContext.UserWorkouts.RemoveRange(UserWorkout);
-            //}
             if (workout != null)
             {
                 _fitnessContext.Workouts.Remove(workout);
