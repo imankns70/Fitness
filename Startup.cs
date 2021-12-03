@@ -35,6 +35,7 @@ namespace Fitness
            
             services.AddScoped<FitnessContext>();
             services.AddScoped<MealBusiness>();
+            services.AddScoped<WorkoutBusines>();
             services.AddCors();
         }
 

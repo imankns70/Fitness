@@ -7,9 +7,9 @@ namespace Fitness.Models.ViewModels.Workouts
 {
     public class StrengthViewModel
     {
-        public int Reps { get; set; }
-        public int Sets { get; set; }
-        public int Weight { get; set; }
+        public int? Reps { get; set; }
+        public int? Sets { get; set; }
+        public int? Weight { get; set; }
        
     }
 }

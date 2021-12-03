@@ -14,6 +14,8 @@ namespace Fitness.Models
         public int UserId { get; set; }
         public virtual Meal Meal { get; set; }
         public virtual User User { get; set; }
+        public int  SectionId { get; set; }
+        public virtual Section Section { get; set; }
 
     }
 }
