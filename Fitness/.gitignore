@@ -1,6 +1,0 @@
-
-bin/Debug/netcoreapp3.1/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-*.json
-Fitness/
-*.cache
-obj/Debug/netcoreapp3.1/Fitness.assets.cache

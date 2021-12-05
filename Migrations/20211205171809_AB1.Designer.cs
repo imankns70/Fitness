@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitness.Migrations
 {
     [DbContext(typeof(FitnessContext))]
-    [Migration("20211130173143_A1")]
-    partial class A1
+    [Migration("20211205171809_AB1")]
+    partial class AB1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,44 @@ namespace Fitness.Migrations
                     b.ToTable("MealIngredients");
                 });
 
+            modelBuilder.Entity("Fitness.Models.Schedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("SelectedDay")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Schedules");
+                });
+
+            modelBuilder.Entity("Fitness.Models.Section", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SectionKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("Sections");
+                });
+
             modelBuilder.Entity("Fitness.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -101,6 +139,9 @@ namespace Fitness.Migrations
                     b.Property<int>("MealId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SectionId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -108,9 +149,31 @@ namespace Fitness.Migrations
 
                     b.HasIndex("MealId");
 
+                    b.HasIndex("SectionId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("UserMeals");
+                });
+
+            modelBuilder.Entity("Fitness.Models.UserWorkout", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkoutId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkoutId");
+
+                    b.ToTable("UserWorkouts");
                 });
 
             modelBuilder.Entity("Fitness.Models.Workout", b =>
@@ -132,6 +195,9 @@ namespace Fitness.Migrations
                     b.Property<int?>("Reps")
                         .HasColumnType("int");
 
+                    b.Property<int>("SectionId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Sets")
                         .HasColumnType("int");
 
@@ -145,6 +211,8 @@ namespace Fitness.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SectionId");
 
                     b.HasIndex("UserId");
 
@@ -166,11 +234,26 @@ namespace Fitness.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Fitness.Models.Section", b =>
+                {
+                    b.HasOne("Fitness.Models.Schedule", "Schedule")
+                        .WithMany("Sections")
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Fitness.Models.UserMeal", b =>
                 {
                     b.HasOne("Fitness.Models.Meal", "Meal")
                         .WithMany("Users")
                         .HasForeignKey("MealId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitness.Models.Section", "Section")
+                        .WithMany("Meals")
+                        .HasForeignKey("SectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -181,9 +264,24 @@ namespace Fitness.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Fitness.Models.UserWorkout", b =>
+                {
+                    b.HasOne("Fitness.Models.Workout", null)
+                        .WithMany("Users")
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Fitness.Models.Workout", b =>
                 {
-                    b.HasOne("Fitness.Models.User", "User")
+                    b.HasOne("Fitness.Models.Section", "Section")
+                        .WithMany("Workouts")
+                        .HasForeignKey("SectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitness.Models.User", null)
                         .WithMany("Workouts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

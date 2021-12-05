@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fitness.Migrations
 {
-    public partial class A1 : Migration
+    public partial class AB1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +31,19 @@ namespace Fitness.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Meals", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Schedules",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SelectedDay = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Schedules", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,13 +87,35 @@ namespace Fitness.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Sections",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SectionKey = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    ScheduleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sections", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sections_Schedules_ScheduleId",
+                        column: x => x.ScheduleId,
+                        principalTable: "Schedules",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserMeals",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MealId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    SectionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,6 +124,12 @@ namespace Fitness.Migrations
                         name: "FK_UserMeals_Meals_MealId",
                         column: x => x.MealId,
                         principalTable: "Meals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserMeals_Sections_SectionId",
+                        column: x => x.SectionId,
+                        principalTable: "Sections",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -106,20 +148,47 @@ namespace Fitness.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true),
-                    Distance = table.Column<int>(nullable: true),
-                    Duration = table.Column<int>(nullable: true),
                     Reps = table.Column<int>(nullable: true),
                     Sets = table.Column<int>(nullable: true),
                     Weight = table.Column<int>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
+                    Distance = table.Column<int>(nullable: true),
+                    Duration = table.Column<int>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    SectionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Workouts", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Workouts_Sections_SectionId",
+                        column: x => x.SectionId,
+                        principalTable: "Sections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Workouts_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserWorkouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    WorkoutId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserWorkouts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserWorkouts_Workouts_WorkoutId",
+                        column: x => x.WorkoutId,
+                        principalTable: "Workouts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -135,14 +204,34 @@ namespace Fitness.Migrations
                 column: "MealId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Sections_ScheduleId",
+                table: "Sections",
+                column: "ScheduleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserMeals_MealId",
                 table: "UserMeals",
                 column: "MealId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserMeals_SectionId",
+                table: "UserMeals",
+                column: "SectionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserMeals_UserId",
                 table: "UserMeals",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserWorkouts_WorkoutId",
+                table: "UserWorkouts",
+                column: "WorkoutId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workouts_SectionId",
+                table: "Workouts",
+                column: "SectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Workouts_UserId",
@@ -159,7 +248,7 @@ namespace Fitness.Migrations
                 name: "UserMeals");
 
             migrationBuilder.DropTable(
-                name: "Workouts");
+                name: "UserWorkouts");
 
             migrationBuilder.DropTable(
                 name: "Ingredients");
@@ -168,7 +257,16 @@ namespace Fitness.Migrations
                 name: "Meals");
 
             migrationBuilder.DropTable(
+                name: "Workouts");
+
+            migrationBuilder.DropTable(
+                name: "Sections");
+
+            migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Schedules");
         }
     }
 }

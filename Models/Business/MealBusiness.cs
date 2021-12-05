@@ -15,6 +15,7 @@ namespace Fitness.Models.Business
         {
             _fitnessContext = fitnessContext;
         }
+
         public List<MealViewModel> GetMeals(int? userId)
         {
             var result = _fitnessContext.UserMeals.AsQueryable();
@@ -179,7 +180,11 @@ namespace Fitness.Models.Business
                     {
                         new UserMeal
                         {
-                            UserId= viewModel.UserId
+                            UserId= viewModel.UserId,
+                            Section= new Section
+                            {
+                                Name= viewModel.Section
+                            }
                         }
                     }
                 };

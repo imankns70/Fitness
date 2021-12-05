@@ -11,6 +11,7 @@ namespace Fitness.Models.ViewModels
         public string Name { get; set; }
         public string[] Ingredients { get; set; }
         public int UserId { get; set; }
+        public string Section { get; set; }
 
     }
 }
