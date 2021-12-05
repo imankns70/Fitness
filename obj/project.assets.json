@@ -5307,31 +5307,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sony\\.nuget\\packages\\": {}
+    "C:\\Users\\iman\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.netCore\\Fitness\\Fitness\\Fitness.csproj",
+      "projectUniqueName": "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj",
       "projectName": "Fitness",
-      "projectPath": "D:\\.netCore\\Fitness\\Fitness\\Fitness.csproj",
-      "packagesPath": "C:\\Users\\sony\\.nuget\\packages\\",
-      "outputPath": "D:\\.netCore\\Fitness\\Fitness\\obj\\",
+      "projectPath": "D:\\Projects\\Fitness\\Fitness\\Fitness.csproj",
+      "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Fitness\\Fitness\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sony\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5343,7 +5341,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -5390,7 +5387,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

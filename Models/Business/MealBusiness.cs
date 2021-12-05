@@ -15,7 +15,6 @@ namespace Fitness.Models.Business
         {
             _fitnessContext = fitnessContext;
         }
-
         public List<MealViewModel> GetMeals(int? userId)
         {
             var result = _fitnessContext.UserMeals.AsQueryable();
