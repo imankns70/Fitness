@@ -24,10 +24,10 @@ namespace Fitness.Controllers
 
         //[HttpGet]
         [HttpGet("{id}")]
-        public ApiResult<List<MealViewModel>> Get(int? id)
+        public ApiResult<List<MealViewModel>> Get(int id)
         {
             //return Ok(new List<MealViewModel>());
-            return Ok(_mealBusiness.GetMeals(id));
+            return Ok(_mealBusiness.GetMeals(id,null,null));
 
 
         }

@@ -205,6 +205,5 @@ D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.dll
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.pdb
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cache
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.AssemblyReference.cache
-D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache
 D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.json

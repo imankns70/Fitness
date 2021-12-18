@@ -12,6 +12,7 @@ namespace Fitness.Models
         [Key]
         public int Id { get; set; }
         public DateTime SelectedDay { get; set; }
-        public virtual ICollection<Section> Sections { get; set; }
+        public virtual ICollection<Workout> Workouts { get; set; }
+        public virtual ICollection<UserMeal> Meals { get; set; }
     }
 }

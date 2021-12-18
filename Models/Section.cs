@@ -11,9 +11,7 @@ namespace Fitness.Models
         [Key]
         public int Id { get; set; }
         public string SectionKey { get; set; }
-        public string Name { get; set; }
-        public int?  ScheduleId { get; set; }
-        public virtual Schedule Schedule { get; set; }
+        public string Name { get; set; }       
 
         public virtual ICollection<UserMeal> Meals { get; set; }
         public virtual ICollection<Workout> Workouts { get; set; }

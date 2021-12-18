@@ -18,27 +18,19 @@ namespace Fitness.Controllers
     [ApiResultFilter]
     public class WorkOutController : ControllerBase
     {
-        private WorkoutBusines workoutBusines;
-        public WorkOutController(WorkoutBusines workoutBusines)
+        private WorkoutBusiness workoutBusines;
+        public WorkOutController(WorkoutBusiness workoutBusines)
         {
             this.workoutBusines = workoutBusines;
         }
-        // GET: api/<WorkOutController>
-        [HttpGet]
-        public ApiResult<IEnumerable<Workout>> Get()
-        {
-            return Ok(workoutBusines.GetWorkout());
-        }
        
-        //}
-        // GET api/<WorkOutController>/5
+    
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(workoutBusines.GetWorkoutById(id));
+            return Ok(workoutBusines.GetWorkouts(id, null, null));
         }
-
-        // POST api/<WorkOutController>
+ 
         [HttpPost]
         public ApiResult AddWorkout(WorkoutViewModel workout)
         {
@@ -46,8 +38,8 @@ namespace Fitness.Controllers
             return Ok();
         }
 
-        // PUT api/<WorkOutController>/5
-       
+     
+
         [HttpPut]
         public ApiResult EditWorkout(WorkoutViewModel viewModel)
         {
@@ -58,12 +50,12 @@ namespace Fitness.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-                
+
             }
 
-         
+
             return Ok();
-           
+
         }
 
         // DELETE api/<WorkOutController>/5

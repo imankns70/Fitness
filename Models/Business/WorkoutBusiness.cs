@@ -7,55 +7,65 @@ using System.Threading.Tasks;
 
 namespace Fitness.Models.Business
 {
-    public class WorkoutBusines
+    public class WorkoutBusiness
     {
         private readonly FitnessContext _fitnessContext;
-        public WorkoutBusines(FitnessContext fitnessContext)
+        public WorkoutBusiness(FitnessContext fitnessContext)
         {
             _fitnessContext = fitnessContext;
         }
 
-        public List<WorkoutViewModel> GetWorkout()
+        public List<WorkoutViewModel> GetWorkouts(int userId, int? sectionId,int? scheduleId)
         {
-            return _fitnessContext.Workouts.Select(w=>new WorkoutViewModel() {
-            WorkoutId=w.Id,
-            Name=w.Name,
-            Type=w.Type,
-            UserId=w.UserId,
-            Endurance=new EnduranceViewModel()
+            var result = _fitnessContext.Workouts.Where(a => a.UserId == userId);
+
+            if (sectionId.HasValue)
+                result.Where(a => a.SectionId == sectionId);
+
+            if (scheduleId.HasValue)
+                result = result.Where(a => a.ScheduleId == scheduleId);
+
+
+            return result.Select(w => new WorkoutViewModel()
             {
-                Distance=w.Distance,
-                Duration=w.Duration
-            },
-            Strength=new StrengthViewModel()
-            {
-                Reps=w.Reps,
-                Sets=w.Sets,
-                Weight=w.Weight
-            }
-            
-            
+                WorkoutId = w.Id,
+                Name = w.Name,
+                Type = w.Type,
+                UserId = w.UserId,
+                Endurance = new EnduranceViewModel()
+                {
+                    Distance = w.Distance,
+                    Duration = w.Duration
+                },
+                Strength = new StrengthViewModel()
+                {
+                    Reps = w.Reps,
+                    Sets = w.Sets,
+                    Weight = w.Weight
+                }
+
+
             }).ToList();
         }
         public WorkoutViewModel GetWorkoutById(int workoutId)
         {
-            Workout workout=_fitnessContext.Workouts.Find(workoutId);
+            Workout workout = _fitnessContext.Workouts.Find(workoutId);
             return new WorkoutViewModel()
             {
-                WorkoutId=workout.Id,
-                Name=workout.Name,
-                Type=workout.Type,
-                UserId=workout.UserId,
-                Endurance=new EnduranceViewModel()
+                WorkoutId = workout.Id,
+                Name = workout.Name,
+                Type = workout.Type,
+                UserId = workout.UserId,
+                Endurance = new EnduranceViewModel()
                 {
-                    Distance=workout.Distance,
-                    Duration=workout.Duration
+                    Distance = workout.Distance,
+                    Duration = workout.Duration
                 },
-                Strength=new StrengthViewModel()
+                Strength = new StrengthViewModel()
                 {
-                    Reps=workout.Reps,
-                    Sets=workout.Sets,
-                    Weight=workout.Weight
+                    Reps = workout.Reps,
+                    Sets = workout.Sets,
+                    Weight = workout.Weight
                 }
             };
         }
@@ -90,7 +100,7 @@ namespace Fitness.Models.Business
                 workout.Id = viewModel.WorkoutId.Value;
                 workout.Name = viewModel.Name;
                 workout.Type = viewModel.Type;
-                
+
                 if (viewModel.Type == "Strength")
                 {
                     workout.Sets = viewModel.Strength.Sets;

@@ -16,13 +16,14 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<MealViewModel> GetMeals(int? userId)
+        public List<MealViewModel> GetMeals(int userId, int? sectionId, int? scheduleId)
         {
-            var result = _fitnessContext.UserMeals.AsQueryable();
-            if (userId.HasValue)
-            {
-                result = result.Where(a => a.UserId == userId);
-            }
+            var result = _fitnessContext.UserMeals.Where(a => a.UserId == userId);
+          
+            if (sectionId.HasValue)
+                result = result.Where(a => a.SectionId == sectionId);
+            if (scheduleId.HasValue)
+                result = result.Where(a => a.ScheduleId == scheduleId);
 
             return result
                  .Select(a => new MealViewModel
@@ -34,11 +35,11 @@ namespace Fitness.Models.Business
                  }
                  ).ToList();
         }
-       
+
         //حذف غذا
         public void Remove(int mealId, int userId)
         {
-            
+
             //UserMeal userMeal = _fitnessContext.UserMeals.Where(a => a.MealId == mealId && a.UserId == userId).Single();
             List<UserMeal> userMeals = _fitnessContext.UserMeals.Where(c => c.MealId == mealId).ToList();
             List<UserMeal> anotherUserMeals = userMeals.Where(a => a.UserId != userId).ToList();
@@ -47,7 +48,7 @@ namespace Fitness.Models.Business
             if (!anotheringridents.Any() && !anotherUserMeals.Any())
             {
 
-                Meal meal = _fitnessContext.Meals.Single(a=> a.Id==mealId);
+                Meal meal = _fitnessContext.Meals.Single(a => a.Id == mealId);
                 _fitnessContext.Meals.Remove(meal);
             }
 
