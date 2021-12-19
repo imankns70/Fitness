@@ -32,7 +32,8 @@ namespace Fitness.Controllers
         [HttpPost]
         public ApiResult<List<ScheduleViewModel>> ScheculeAssigned(ScheduleAssign viewModel)
         {
-            // add assigned
+            _scheduleBusiness.SetSchedule(viewModel);
+          
             return Ok(_scheduleBusiness.GetSchedule(viewModel.UserId, viewModel.Day));
         }
 

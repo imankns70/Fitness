@@ -47,5 +47,17 @@ namespace Fitness.Models.Business
 
             return schedules;
         }
+
+        public void SetSchedule(ScheduleAssign viewModel)
+        {
+            if (viewModel.Type=="workouts")
+            {
+                _workoutBusiness.AssignedWorkoutToSchedule(viewModel);
+            }
+            else
+            {
+                _mealBusiness.AssignedMealToSchedule(viewModel);
+            }
+        }
     }
 }

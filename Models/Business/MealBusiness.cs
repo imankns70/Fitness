@@ -18,22 +18,33 @@ namespace Fitness.Models.Business
 
         public List<MealViewModel> GetMeals(int userId, int? sectionId, int? scheduleId)
         {
-            var result = _fitnessContext.UserMeals.Where(a => a.UserId == userId);
-          
+            var result = _fitnessContext.UserMeals.Include(s => s.Meal).ThenInclude(f => f.Ingredients).Where(a => a.UserId == userId);
+
             if (sectionId.HasValue)
                 result = result.Where(a => a.SectionId == sectionId);
             if (scheduleId.HasValue)
                 result = result.Where(a => a.ScheduleId == scheduleId);
 
-            return result
-                 .Select(a => new MealViewModel
-                 {
-                     Id = a.MealId,
-                     Name = a.Meal.Name,
-                     Ingredients = a.Meal.Ingredients.Select(x => x.Ingredient.Name).ToArray(),
-                     UserId = a.UserId
-                 }
-                 ).ToList();
+            var groupMeal = result.ToList().GroupBy(
+                   x => x.MealId,
+                   x => x,
+                   (key, g) => new { MealId = key, List = g }).ToList();
+
+            List<MealViewModel> meals = new List<MealViewModel>();
+            foreach (var item in groupMeal)
+            {
+                var ingredients = _fitnessContext.MealIngredients.Where(a => a.MealId == item.MealId).Select(s => s.Ingredient.Name).ToArray();
+                meals.Add(
+                    new MealViewModel
+                    {
+                        Id = item.MealId,
+                        Name = item.List.First().Meal?.Name,
+                        Ingredients = ingredients,
+                        UserId = item.List.First().UserId
+                    }
+                    );
+            }
+            return meals;
         }
 
         //حذف غذا
@@ -224,6 +235,41 @@ namespace Fitness.Models.Business
                 throw new Exception("نام غذا تکراری می باشد");
             }
         }
+        public void AssignedMealToSchedule(ScheduleAssign scheduleAssign)
+        {
+            List<Meal> meals = _fitnessContext.Meals.Where(a => scheduleAssign.Assigned.Contains(a.Name)).ToList();
+            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
+            var schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay == scheduleAssign.Day.Date);
+
+
+            List<UserMeal> userMealsInDb = _fitnessContext.UserMeals
+                .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
+
+            var addList = meals.Where(a => !userMealsInDb.Select(s => s.MealId).Contains(a.Id)).ToList();
+
+            List<UserMeal> adds = new List<UserMeal>();
+            foreach (var item in meals)
+            {
+                _fitnessContext.UserMeals.Add(new UserMeal
+                {
+                    SectionId = sectionId,
+                    Schedule = schedule == null ? new Schedule { SelectedDay = scheduleAssign.Day } : schedule,
+                    MealId = item.Id,
+                    UserId = scheduleAssign.UserId
+                }
+                  );
+
+
+            }
+
+            List<UserMeal> removeList = userMealsInDb.Where(a => !meals.Select(s => s.Id).Contains(a.Id)).ToList();
+            _fitnessContext.RemoveRange(removeList);
+
+
+            _fitnessContext.SaveChanges();
+        }
+
+
     }
 }
 

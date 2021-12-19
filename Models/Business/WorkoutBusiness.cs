@@ -1,4 +1,5 @@
-﻿using Fitness.Models.ViewModels.Workouts;
+﻿using Fitness.Models.ViewModels;
+using Fitness.Models.ViewModels.Workouts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<WorkoutViewModel> GetWorkouts(int userId, int? sectionId,int? scheduleId)
+        public List<WorkoutViewModel> GetWorkouts(int userId, int? sectionId, int? scheduleId)
         {
             var result = _fitnessContext.Workouts.Where(a => a.UserId == userId);
 
@@ -127,6 +128,23 @@ namespace Fitness.Models.Business
             if (workout != null)
             {
                 _fitnessContext.Workouts.Remove(workout);
+            }
+            _fitnessContext.SaveChanges();
+        }
+
+
+        public void AssignedWorkoutToSchedule(ScheduleAssign scheduleAssign)
+        {
+            List<Workout> workouts = _fitnessContext.Workouts.Where(a => a.UserId == scheduleAssign.UserId && scheduleAssign.Assigned.Contains(a.Name)).ToList();
+            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
+            var schedule = _fitnessContext.Schedules.Single(a => a.SelectedDay == scheduleAssign.Day);
+            foreach (var item in workouts)
+            {
+                item.SectionId = sectionId;
+                item.ScheduleId = sectionId;
+                item.Schedule = schedule == null ? new Schedule { SelectedDay = scheduleAssign.Day } : schedule;
+
+
             }
             _fitnessContext.SaveChanges();
         }
