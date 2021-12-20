@@ -28,7 +28,7 @@ namespace Fitness.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(workoutBusines.GetWorkouts(id, null, null));
+            return Ok(workoutBusines.GetWorkouts(id));
         }
  
         [HttpPost]

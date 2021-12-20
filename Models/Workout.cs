@@ -18,11 +18,8 @@ namespace Fitness.Models
         public int? Weight { get; set; }
         public int? Distance { get; set; }
         public int? Duration { get; set; }
-        public int UserId { get; set; }
-        public int? SectionId { get; set; }
-        public virtual Section Section { get; set; }
-        public int? ScheduleId { get; set; }
-        public Schedule Schedule { get; set; }
+        public virtual ICollection<UserWorkout> UserWorkouts { get; set; }
+     
  
 
     }

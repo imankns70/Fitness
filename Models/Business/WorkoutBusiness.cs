@@ -16,23 +16,21 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<WorkoutViewModel> GetWorkouts(int userId, int? sectionId, int? scheduleId)
-        {
-            var result = _fitnessContext.Workouts.Where(a => a.UserId == userId);
+        public List<WorkoutViewModel> GetWorkouts(int? id)
+        {            
+            var result = _fitnessContext.Workouts.AsQueryable();
 
-            if (sectionId.HasValue)
-                result.Where(a => a.SectionId == sectionId);
-
-            if (scheduleId.HasValue)
-                result = result.Where(a => a.ScheduleId == scheduleId);
-
+            if (id.HasValue)
+            {
+                result = result.Where(a => a.Id == id);
+            }
 
             return result.Select(w => new WorkoutViewModel()
             {
                 WorkoutId = w.Id,
                 Name = w.Name,
                 Type = w.Type,
-                UserId = w.UserId,
+                //UserId = w,
                 Endurance = new EnduranceViewModel()
                 {
                     Distance = w.Distance,
@@ -48,6 +46,33 @@ namespace Fitness.Models.Business
 
             }).ToList();
         }
+        public List<WorkoutViewModel> GetWorkoutsBySchedule(int userId, int sectionId, int scheduleId)
+        {            
+            var result = _fitnessContext.UserWorkouts.Where(a=>a.UserId==userId && a.SectionId==sectionId && a.ScheduleId==scheduleId).Include(s => s.Workout).AsQueryable();
+
+            
+
+            return result.Select(w => new WorkoutViewModel()
+            {
+                WorkoutId = w.Id,
+                Name = w.Workout.Name,
+                Type = w.Workout.Type,
+                UserId = w.UserId,
+                Endurance = new EnduranceViewModel()
+                {
+                    Distance = w.Workout.Distance,
+                    Duration = w.Workout.Duration
+                },
+                Strength = new StrengthViewModel()
+                {
+                    Reps = w.Workout.Reps,
+                    Sets = w.Workout.Sets,
+                    Weight = w.Workout.Weight
+                }
+
+
+            }).ToList();
+        }
         public WorkoutViewModel GetWorkoutById(int workoutId)
         {
             Workout workout = _fitnessContext.Workouts.Find(workoutId);
@@ -56,7 +81,7 @@ namespace Fitness.Models.Business
                 WorkoutId = workout.Id,
                 Name = workout.Name,
                 Type = workout.Type,
-                UserId = workout.UserId,
+                //UserId = workout.UserId,
                 Endurance = new EnduranceViewModel()
                 {
                     Distance = workout.Distance,
@@ -76,7 +101,7 @@ namespace Fitness.Models.Business
             {
                 Name = viewModel.Name,
                 Type = viewModel.Type,
-                UserId = viewModel.UserId
+                //UserId = viewModel.UserId
 
             };
             if (viewModel.Type == "Strength")
@@ -135,18 +160,63 @@ namespace Fitness.Models.Business
 
         public void AssignedWorkoutToSchedule(ScheduleAssign scheduleAssign)
         {
-            List<Workout> workouts = _fitnessContext.Workouts.Where(a => a.UserId == scheduleAssign.UserId && scheduleAssign.Assigned.Contains(a.Name)).ToList();
-            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
-            var schedule = _fitnessContext.Schedules.Single(a => a.SelectedDay == scheduleAssign.Day);
-            foreach (var item in workouts)
-            {
-                item.SectionId = sectionId;
-                item.ScheduleId = sectionId;
-                item.Schedule = schedule == null ? new Schedule { SelectedDay = scheduleAssign.Day } : schedule;
 
+            //List<Workout> workouts = _fitnessContext.Workouts.Where(a => a.UserId == scheduleAssign.UserId && scheduleAssign.Assigned.Contains(a.Name)).ToList();
+            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
+            DateTime startDate = scheduleAssign.Day.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime endDate = scheduleAssign.Day.Date.Add(new TimeSpan(23, 59, 59));
+            Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay >= startDate && a.SelectedDay <= endDate);
+
+
+            //if (schedule != null)
+            //{
+            //    List<Workout> userWorkoutsInDb = _fitnessContext.Workouts
+            //                  .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
+
+            //    var addList = workouts.Where(a => !userWorkoutsInDb.Select(s => s.Id).Contains(a.Id)).ToList();
+
+            //    if (addList.Any())
+            //        AddWorkoutToNewSchedule(scheduleAssign, sectionId, addList, schedule.Id);
+
+            //    List<Workout> removeList = userWorkoutsInDb.Where(a => !workouts.Select(s => s.Id).Contains(a.Id)).ToList();
+
+            //    foreach (var item in removeList)
+            //    {
+            //        item.SectionId = null;
+            //        item.ScheduleId = null;
+
+            //    }
+
+            //}
+            //AddWorkoutToNewSchedule(scheduleAssign, sectionId, workouts, null);
+
+
+
+            _fitnessContext.SaveChanges();
+        }
+        public void AddWorkoutToNewSchedule(ScheduleAssign scheduleAssign, int sectionId, List<Workout> workouts, int? scheduleId)
+        {
+            int currentSchedulId;
+            if (scheduleId.HasValue)
+            {
+                currentSchedulId = scheduleId.Value;
 
             }
-            _fitnessContext.SaveChanges();
+            else
+            {
+                Schedule schedule = new Schedule { SelectedDay = scheduleAssign.Day };
+                _fitnessContext.Schedules.Add(schedule);
+                _fitnessContext.SaveChanges();
+                currentSchedulId = schedule.Id;
+            }
+
+
+            //foreach (var item in workouts)
+            //{
+            //    item.SectionId = sectionId;
+            //    item.ScheduleId = currentSchedulId;
+
+            //}
         }
     }
 }

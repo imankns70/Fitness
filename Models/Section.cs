@@ -14,7 +14,7 @@ namespace Fitness.Models
         public string Name { get; set; }       
 
         public virtual ICollection<UserMeal> Meals { get; set; }
-        public virtual ICollection<Workout> Workouts { get; set; }
+        public virtual ICollection<UserWorkout> UserWorkouts { get; set; }
 
     }
 }

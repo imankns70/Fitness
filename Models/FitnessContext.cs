@@ -23,6 +23,7 @@ namespace Fitness.Models
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<UserWorkout> UserWorkouts { get; set; }
 
     }
 }

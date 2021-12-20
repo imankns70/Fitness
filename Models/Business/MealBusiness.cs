@@ -239,21 +239,60 @@ namespace Fitness.Models.Business
         {
             List<Meal> meals = _fitnessContext.Meals.Where(a => scheduleAssign.Assigned.Contains(a.Name)).ToList();
             var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
-            var schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay == scheduleAssign.Day.Date);
+            DateTime startDate = scheduleAssign.Day.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime endDate = scheduleAssign.Day.Date.Add(new TimeSpan(23, 59, 59));
+            Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay >= startDate && a.SelectedDay <= endDate);
 
 
-            List<UserMeal> userMealsInDb = _fitnessContext.UserMeals
-                .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
+            if (schedule != null)
+            {
+                List<UserMeal> userMealsInDb = _fitnessContext.UserMeals
+                              .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
 
-            var addList = meals.Where(a => !userMealsInDb.Select(s => s.MealId).Contains(a.Id)).ToList();
+                var addList = meals.Where(a => !userMealsInDb.Select(s => s.MealId).Contains(a.Id)).ToList();
 
-            List<UserMeal> adds = new List<UserMeal>();
+                if (addList.Any())
+                    AddMealToNewSchedule(scheduleAssign, sectionId, addList, schedule.Id);
+
+                List<UserMeal> removeList = userMealsInDb.Where(a => !meals.Select(s => s.Id).Contains(a.MealId)).ToList();
+                
+                _fitnessContext.UserMeals.RemoveRange(removeList);
+
+               
+
+            }
+            else
+            {
+                AddMealToNewSchedule(scheduleAssign, sectionId, meals, null);
+            }
+
+
+            _fitnessContext.SaveChanges();
+        }
+
+        public void AddMealToNewSchedule(ScheduleAssign scheduleAssign, int sectionId, List<Meal> meals, int? scheduleId)
+        {
+            int currentSchedulId;
+            if (scheduleId.HasValue)
+            {
+                currentSchedulId = scheduleId.Value;
+
+            }
+            else
+            {
+                Schedule schedule = new Schedule { SelectedDay = scheduleAssign.Day };
+                _fitnessContext.Schedules.Add(schedule);
+                _fitnessContext.SaveChanges();
+                currentSchedulId = schedule.Id;
+            }
+
+
             foreach (var item in meals)
             {
                 _fitnessContext.UserMeals.Add(new UserMeal
                 {
                     SectionId = sectionId,
-                    Schedule = schedule == null ? new Schedule { SelectedDay = scheduleAssign.Day } : schedule,
+                    ScheduleId = currentSchedulId,
                     MealId = item.Id,
                     UserId = scheduleAssign.UserId
                 }
@@ -261,14 +300,7 @@ namespace Fitness.Models.Business
 
 
             }
-
-            List<UserMeal> removeList = userMealsInDb.Where(a => !meals.Select(s => s.Id).Contains(a.Id)).ToList();
-            _fitnessContext.RemoveRange(removeList);
-
-
-            _fitnessContext.SaveChanges();
         }
-
 
     }
 }

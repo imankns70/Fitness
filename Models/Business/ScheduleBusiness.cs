@@ -26,7 +26,9 @@ namespace Fitness.Models.Business
             List<ScheduleViewModel> schedules = new List<ScheduleViewModel>();
 
             List<Section> sections = _fitnessContext.Sections.ToList();
-            Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay == selectedDay);
+            DateTime startDate = selectedDay.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime endDate = selectedDay.Date.Add(new TimeSpan(23, 59 ,59));
+            Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay >= startDate && a.SelectedDay <= endDate);
 
             if (schedule != null)
             {
@@ -35,7 +37,7 @@ namespace Fitness.Models.Business
                     schedules.Add(new ScheduleViewModel
                     {
                         Meals = _mealBusiness.GetMeals(userId, section.Id, schedule.Id),
-                        Workouts = _workoutBusiness.GetWorkouts(userId, section.Id, schedule.Id),
+                        Workouts = _workoutBusiness.GetWorkoutsBySchedule(userId, section.Id, schedule.Id),
                         Section = section.SectionKey
 
 
