@@ -16,18 +16,15 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
-        public List<WorkoutViewModel> GetWorkouts(int? id)
-        {            
+        public List<WorkoutViewModel> GetWorkouts()
+        {
             var result = _fitnessContext.Workouts.AsQueryable();
 
-            if (id.HasValue)
-            {
-                result = result.Where(a => a.Id == id);
-            }
+
 
             return result.Select(w => new WorkoutViewModel()
             {
-                WorkoutId = w.Id,
+                Id = w.Id,
                 Name = w.Name,
                 Type = w.Type,
                 //UserId = w,
@@ -46,55 +43,55 @@ namespace Fitness.Models.Business
 
             }).ToList();
         }
-        public List<WorkoutViewModel> GetWorkoutsBySchedule(int userId, int sectionId, int scheduleId)
-        {            
-            var result = _fitnessContext.UserWorkouts.Where(a=>a.UserId==userId && a.SectionId==sectionId && a.ScheduleId==scheduleId).Include(s => s.Workout).AsQueryable();
-
-            
-
-            return result.Select(w => new WorkoutViewModel()
-            {
-                WorkoutId = w.Id,
-                Name = w.Workout.Name,
-                Type = w.Workout.Type,
-                UserId = w.UserId,
-                Endurance = new EnduranceViewModel()
-                {
-                    Distance = w.Workout.Distance,
-                    Duration = w.Workout.Duration
-                },
-                Strength = new StrengthViewModel()
-                {
-                    Reps = w.Workout.Reps,
-                    Sets = w.Workout.Sets,
-                    Weight = w.Workout.Weight
-                }
-
-
-            }).ToList();
-        }
-        public WorkoutViewModel GetWorkoutById(int workoutId)
+        public WorkoutViewModel GetWorkoutById(int id)
         {
-            Workout workout = _fitnessContext.Workouts.Find(workoutId);
-            return new WorkoutViewModel()
+            return _fitnessContext.Workouts.Where(a => a.Id == id).Select(w => new WorkoutViewModel()
             {
-                WorkoutId = workout.Id,
-                Name = workout.Name,
-                Type = workout.Type,
-                //UserId = workout.UserId,
+                Id = w.Id,
+                Name = w.Name,
+                Type = w.Type,
+                //UserId = w,
                 Endurance = new EnduranceViewModel()
                 {
-                    Distance = workout.Distance,
-                    Duration = workout.Duration
+                    Distance = w.Distance,
+                    Duration = w.Duration
                 },
                 Strength = new StrengthViewModel()
                 {
-                    Reps = workout.Reps,
-                    Sets = workout.Sets,
-                    Weight = workout.Weight
+                    Reps = w.Reps,
+                    Sets = w.Sets,
+                    Weight = w.Weight
                 }
-            };
+
+
+            }).First();
         }
+        public List<WorkoutViewModel> GetWorkoutsBySchedule(int userId, int sectionId, int scheduleId)
+        {
+
+            return _fitnessContext.UserWorkouts.Where(a => a.UserId == userId && a.SectionId == sectionId && a.ScheduleId == scheduleId)
+                .Include(s => s.Workout).Select(w => new WorkoutViewModel()
+                {
+                    Id = w.Id,
+                    Name = w.Workout.Name,
+                    Type = w.Workout.Type,
+                    UserId = w.UserId,
+                    Endurance = new EnduranceViewModel()
+                    {
+                        Distance = w.Workout.Distance,
+                        Duration = w.Workout.Duration
+                    },
+                    Strength = new StrengthViewModel()
+                    {
+                        Reps = w.Workout.Reps,
+                        Sets = w.Workout.Sets,
+                        Weight = w.Workout.Weight
+                    }
+
+
+                }).ToList();
+        }
+
         public void AddWorkouts(WorkoutViewModel viewModel)
         {
             Workout workout = new Workout
@@ -104,7 +101,7 @@ namespace Fitness.Models.Business
                 //UserId = viewModel.UserId
 
             };
-            if (viewModel.Type == "Strength")
+            if (viewModel.Type == "strength")
             {
                 workout.Reps = viewModel.Strength.Reps;
                 workout.Sets = viewModel.Strength.Sets;
@@ -120,14 +117,14 @@ namespace Fitness.Models.Business
         }
         public void EditWorkouts(WorkoutViewModel viewModel)
         {
-            Workout workout = _fitnessContext.Workouts.SingleOrDefault(a => a.Id == viewModel.WorkoutId);
+            Workout workout = _fitnessContext.Workouts.SingleOrDefault(a => a.Id == viewModel.Id);
             if (workout != null)
             {
-                workout.Id = viewModel.WorkoutId.Value;
+                workout.Id = viewModel.Id.Value;
                 workout.Name = viewModel.Name;
                 workout.Type = viewModel.Type;
 
-                if (viewModel.Type == "Strength")
+                if (viewModel.Type == "strength")
                 {
                     workout.Sets = viewModel.Strength.Sets;
                     workout.Reps = viewModel.Strength.Reps;
@@ -161,34 +158,34 @@ namespace Fitness.Models.Business
         public void AssignedWorkoutToSchedule(ScheduleAssign scheduleAssign)
         {
 
-            //List<Workout> workouts = _fitnessContext.Workouts.Where(a => a.UserId == scheduleAssign.UserId && scheduleAssign.Assigned.Contains(a.Name)).ToList();
-            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
+            List<Workout> workouts = _fitnessContext.Workouts.Where(a => scheduleAssign.Assigned.Contains(a.Name)).ToList();
+            var sectionId = _fitnessContext.Sections.Single(a => a.SectionKey == scheduleAssign.Section).Id;
             DateTime startDate = scheduleAssign.Day.Date.Add(new TimeSpan(0, 0, 0));
             DateTime endDate = scheduleAssign.Day.Date.Add(new TimeSpan(23, 59, 59));
             Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay >= startDate && a.SelectedDay <= endDate);
 
 
-            //if (schedule != null)
-            //{
-            //    List<Workout> userWorkoutsInDb = _fitnessContext.Workouts
-            //                  .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
+            if (schedule != null)
+            {
+                List<UserWorkout> userWorkoutsInDb = _fitnessContext.UserWorkouts
+                              .Where(a => a.UserId == scheduleAssign.UserId && a.SectionId == sectionId && a.ScheduleId == schedule.Id).ToList();
 
-            //    var addList = workouts.Where(a => !userWorkoutsInDb.Select(s => s.Id).Contains(a.Id)).ToList();
+                var addList = workouts.Where(a => !userWorkoutsInDb.Select(s => s.WorkoutId).Contains(a.Id)).ToList();
 
-            //    if (addList.Any())
-            //        AddWorkoutToNewSchedule(scheduleAssign, sectionId, addList, schedule.Id);
+                if (addList.Any())
+                    AddWorkoutToNewSchedule(scheduleAssign, sectionId, addList, schedule.Id);
 
-            //    List<Workout> removeList = userWorkoutsInDb.Where(a => !workouts.Select(s => s.Id).Contains(a.Id)).ToList();
+                List<UserWorkout> removeList = userWorkoutsInDb.Where(a => !workouts.Select(s => s.Id).Contains(a.WorkoutId)).ToList();
 
-            //    foreach (var item in removeList)
-            //    {
-            //        item.SectionId = null;
-            //        item.ScheduleId = null;
+                _fitnessContext.UserWorkouts.RemoveRange(removeList);
 
-            //    }
 
-            //}
-            //AddWorkoutToNewSchedule(scheduleAssign, sectionId, workouts, null);
+
+            }
+            else
+            {
+                AddWorkoutToNewSchedule(scheduleAssign, sectionId, workouts, null);
+            }
 
 
 
@@ -211,12 +208,19 @@ namespace Fitness.Models.Business
             }
 
 
-            //foreach (var item in workouts)
-            //{
-            //    item.SectionId = sectionId;
-            //    item.ScheduleId = currentSchedulId;
 
-            //}
+            foreach (var item in workouts)
+            {
+                _fitnessContext.UserWorkouts.Add(new UserWorkout
+                {
+                    SectionId = sectionId,
+                    ScheduleId = currentSchedulId,
+                    WorkoutId = item.Id,
+                    UserId = scheduleAssign.UserId
+                });
+
+
+            }
         }
     }
 }

@@ -16,6 +16,20 @@ namespace Fitness.Models.Business
             _fitnessContext = fitnessContext;
         }
 
+        public List<MealViewModel> GetMealsAllMeals()
+        {
+            return _fitnessContext.Meals.Select(n =>
+               new MealViewModel
+               {
+                   Id = n.Id,
+                   Name = n.Name,
+                   Ingredients = n.Ingredients.Select(a => a.Ingredient.Name).ToArray(),
+
+               }).ToList();
+        }
+
+
+
         public List<MealViewModel> GetMeals(int userId, int? sectionId, int? scheduleId)
         {
             var result = _fitnessContext.UserMeals.Include(s => s.Meal).ThenInclude(f => f.Ingredients).Where(a => a.UserId == userId);
@@ -188,17 +202,7 @@ namespace Fitness.Models.Business
                 Meal meal = new Meal
                 {
                     Name = viewModel.Name,
-                    Users = new List<UserMeal>
-                    {
-                        new UserMeal
-                        {
-                            UserId= viewModel.UserId,
-                            Section= new Section
-                            {
-                                Name= viewModel.Section
-                            }
-                        }
-                    }
+                     
                 };
                 List<Ingredient> existIngrediants = _fitnessContext.Ingredients.Where(a => viewModel.Ingredients.Contains(a.Name)).ToList();
                 foreach (var item in viewModel.Ingredients)
@@ -238,7 +242,7 @@ namespace Fitness.Models.Business
         public void AssignedMealToSchedule(ScheduleAssign scheduleAssign)
         {
             List<Meal> meals = _fitnessContext.Meals.Where(a => scheduleAssign.Assigned.Contains(a.Name)).ToList();
-            var sectionId = _fitnessContext.Sections.Single(a => a.Name == scheduleAssign.Section).Id;
+            var sectionId = _fitnessContext.Sections.Single(a => a.SectionKey == scheduleAssign.Section).Id;
             DateTime startDate = scheduleAssign.Day.Date.Add(new TimeSpan(0, 0, 0));
             DateTime endDate = scheduleAssign.Day.Date.Add(new TimeSpan(23, 59, 59));
             Schedule schedule = _fitnessContext.Schedules.FirstOrDefault(a => a.SelectedDay >= startDate && a.SelectedDay <= endDate);
@@ -255,10 +259,10 @@ namespace Fitness.Models.Business
                     AddMealToNewSchedule(scheduleAssign, sectionId, addList, schedule.Id);
 
                 List<UserMeal> removeList = userMealsInDb.Where(a => !meals.Select(s => s.Id).Contains(a.MealId)).ToList();
-                
+
                 _fitnessContext.UserMeals.RemoveRange(removeList);
 
-               
+
 
             }
             else

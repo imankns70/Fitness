@@ -25,11 +25,16 @@ namespace Fitness.Controllers
         }
        
     
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("GetAllWorkouts")]
+        public ApiResult<List<WorkoutViewModel>> GetAllWorkouts()
         {
-            return Ok(workoutBusines.GetWorkouts(id));
+            return Ok(workoutBusines.GetWorkouts());
         }
+        //[HttpGet("{id}")]
+        //public ApiResult<WorkoutViewModel> GetWorkoutById(int id)
+        //{
+        //    return Ok(workoutBusines.GetWorkoutById(id));
+        //}
  
         [HttpPost]
         public ApiResult AddWorkout(WorkoutViewModel workout)

@@ -12,7 +12,7 @@ namespace Fitness.Models.ViewModels.Workouts
             Strength = new StrengthViewModel();
             Endurance = new EnduranceViewModel();
         }
-        public int? WorkoutId { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public int UserId { get; set; }
