@@ -207,4 +207,3 @@ D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.genruntimeconfig.cac
 D:\.netCore\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csproj.AssemblyReference.cache
 D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Projects\Fitness\Fitness\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Projects\Fitness\Fitness\obj\Debug\netcoreapp3.1\Fitness.csprojAssemblyReference.cache

@@ -24,6 +24,9 @@ namespace Fitness.Models
         public DbSet<Section> Sections { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<UserWorkout> UserWorkouts { get; set; }
+        public DbSet<Pizza> Pizzas { get; set; }
+        public DbSet<Topping> Toppings { get; set; }
+        public DbSet<PizzaTopping> PizzaToppings { get; set; }
 
     }
 }
