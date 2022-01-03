@@ -28,7 +28,7 @@ namespace Fitness.Controllers
         {
             List<PizzaViewModel> Pizzas = _PizzaBusiness.GetPizzas();
 
-            return Ok(Pizzas);
+            return Ok(Pizzas); 
         }
         [HttpGet("GetToppings")]
         public ApiResult<List<ToppingViewModel>> GetToppings()
